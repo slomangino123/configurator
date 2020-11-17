@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "JF81gnqJTbKEfNYaPeJkGSjh4GGUeyl01pgj3wItcogxqo2VW1f/B56um9heOEt9mdGxNlxuD6TzkpZHsOklLw==",
+  "success": true,
+  "projectFilePath": "C:\\Code\\configurator\\src\\Configurator\\Configurator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.10\\microsoft.extensions.configuration.binder.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration.environmentvariables\\3.1.10\\microsoft.extensions.configuration.environmentvariables.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\3.1.10\\microsoft.extensions.configuration.fileextensions.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.configuration.json\\3.1.10\\microsoft.extensions.configuration.json.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.10\\microsoft.extensions.fileproviders.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\3.1.10\\microsoft.extensions.fileproviders.physical.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\3.1.10\\microsoft.extensions.filesystemglobbing.3.1.10.nupkg.sha512",
+    "C:\\Users\\sloma\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
