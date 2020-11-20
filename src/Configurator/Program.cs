@@ -3,6 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Configurator.Configuration;
 using Configurator.Interfaces;
+using Configurator.Services;
+using Configurator.Services.OutputGenerators;
+using Configurator.Services.Processors;
+using Configurator.Services.Validators;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Binder;
 using Microsoft.Extensions.Configuration.EnvironmentVariables;
@@ -17,20 +21,20 @@ namespace Configurator
         static async Task Main(string[] args)
         {
             var configurationBuilder = new ConfigurationBuilder();
-            configurationBuilder.AddJsonFile($"appsettings.json");
+            configurationBuilder
+                .AddJsonFile($"appsettings.json")
+                .AddEnvironmentVariables();
             IConfiguration config = configurationBuilder.Build();
 
             var services = new ServiceCollection();
 
-            services.ConfigureServices();
+            var executor = services.AddConfigurator<object, Arguments, Output>(config)
+                .AddArgumentExtractor<ArgumentExtractor>()
+                .AddArgumentValidator<BuildValidator>()
+                .AddArgumentValidator<BranchValidator>()
+                .Build();
 
-            using (var serviceProvider = services.BuildServiceProvider())
-            using (var scope = serviceProvider.CreateScope())
-            {
-                var pipeline = scope.ServiceProvider.GetRequiredService<IPipeline>();
-
-                await pipeline.Begin(config, new CancellationToken());
-            }
+            executor.Execute();
         }
     }
 }

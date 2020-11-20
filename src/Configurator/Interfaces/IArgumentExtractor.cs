@@ -7,8 +7,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Configurator.Interfaces
 {
-    public interface IPipeline
+    public interface IArgumentExtractor<TArguments>
+        where TArguments : IArguments
     {
-        Task Begin(IConfiguration config, CancellationToken cancellationToken);
+        TArguments Extract(IConfiguration config);
     }
 }
