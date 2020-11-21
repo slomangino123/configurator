@@ -1,18 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Configurator.Configuration;
-using Configurator.Interfaces;
 using Configurator.Services;
-using Configurator.Services.OutputGenerators;
-using Configurator.Services.Processors;
+using Configurator.Services.OutputBuilders;
 using Configurator.Services.Validators;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Binder;
-using Microsoft.Extensions.Configuration.EnvironmentVariables;
-using Microsoft.Extensions.Configuration.FileExtensions;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Configurator
 {
@@ -30,6 +21,7 @@ namespace Configurator
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
+                .AddOutputBuilder<BranchOutputBuilder>()
                 .Build();
 
             executor.Execute();

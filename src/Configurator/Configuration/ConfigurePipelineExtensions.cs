@@ -40,5 +40,12 @@ namespace Configurator.Configuration
             builder.Services.AddTransient<IArgumentValidator, TValidator>();
             return builder;
         }
+
+        public static IPipelineBuilder AddOutputBuilder<TBuilder>(this IPipelineBuilder builder)
+            where TBuilder : class, IOutputBuilder
+        {
+            builder.Services.AddTransient<IOutputBuilder, TBuilder>();
+            return builder;
+        }
     }
 }

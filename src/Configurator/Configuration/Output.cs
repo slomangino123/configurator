@@ -9,10 +9,7 @@ namespace Configurator.Configuration
     {
         public Output()
         {
-            Pairs = new Dictionary<string, string>();
         }
-
-        public IDictionary<string, string> Pairs { get; private set; }
         public string Branch { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,6 +37,12 @@ namespace Configurator.Services
             var args = argumentBuilder.Build();
 
             var pipelineContext = new PipelineContext<TArguments>((TArguments)args, serviceProvider);
+
+            // Get default constructor for output type
+            var ctor = Output.GetConstructor(new Type[0]);
+
+            // Initialize the pipeline context's output object.
+            pipelineContext.Output = (IOutput)ctor.Invoke(new object[0]);
 
             var pipelineExecutor = new PipelineExecutor(pipelineContext);
 

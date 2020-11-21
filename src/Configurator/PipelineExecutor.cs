@@ -24,9 +24,16 @@ namespace Configurator
         {
             var validators = context.Services.GetServices<IArgumentValidator>();
 
-            foreach (var validator in validators)
+            foreach (var validator in validators.OrderBy(x => x.Precedence))
             {
                 validator.Validate(context.GetArguments(), default).Wait();
+            }
+
+            var builders = context.Services.GetServices<IOutputBuilder>();
+
+            foreach (var builder in builders.OrderBy(x => x.Precedence))
+            {
+                builder.Build(context.GetOutput(), context.GetArguments());
             }
         }
 

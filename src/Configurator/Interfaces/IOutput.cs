@@ -6,6 +6,5 @@ namespace Configurator.Interfaces
 {
     public interface IOutput
     {
-        IDictionary<string, string> Pairs { get; }
     }
 }
