@@ -11,19 +11,18 @@ namespace Configurator.Configuration
     public static class ConfigurePipelineExtensions
     {
         public static IPipelineBuilder AddConfigurator<TProject, TArguments, TOutput>(
-           this IServiceCollection services,
-           IConfiguration config)
+           this IConfiguration config)
            where TArguments : IArguments
         {
+            var services = new ServiceCollection();
+            services.AddTransient<IConfiguration>((svc) => config);
+            services.AddTransient<IArgumentBuilder, ArgumentBuilder<TArguments>>();
+
             var builder = new PipelineBuilder<TArguments>(
                 typeof(TProject),
                 typeof(TArguments),
                 typeof(TOutput),
                 services);
-
-            builder.Services.AddTransient<IConfiguration>((svc) => config);
-
-            builder.Services.AddTransient<IArgumentBuilder, ArgumentBuilder<TArguments>>();
 
             return builder;
         }

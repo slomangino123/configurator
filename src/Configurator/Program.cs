@@ -26,9 +26,7 @@ namespace Configurator
                 .AddEnvironmentVariables();
             IConfiguration config = configurationBuilder.Build();
 
-            var services = new ServiceCollection();
-
-            var executor = services.AddConfigurator<object, Arguments, Output>(config)
+            var executor = config.AddConfigurator<object, Arguments, Output>()
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
