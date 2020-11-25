@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Configurator.Interfaces
 {
-    public interface IOutputGenerator
+    public interface IGenerator<TOutput>
+        where TOutput : IOutput
     {
-        Task GenerateOutput(IOutput output, CancellationToken cancellationToken);
+        void Generate(TOutput output);
     }
 }
   

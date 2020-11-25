@@ -6,7 +6,7 @@ using Configurator.Configuration;
 
 namespace Configurator.Services.OutputBuilders
 {
-    public class BranchOutputBuilder : BaseOutputBuilder<string, Output, Arguments>
+    public class BranchBuilder : BaseOutputBuilder<string, Output, Arguments>
     {
         public override Expression<Func<Output, string>> PropertySelector => (x) => x.Branch;
 

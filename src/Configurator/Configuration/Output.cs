@@ -10,6 +10,7 @@ namespace Configurator.Configuration
         public Output()
         {
         }
+        public bool Build { get; set; }
         public string Branch { get; set; }
     }
 }

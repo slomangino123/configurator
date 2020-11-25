@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Configurator.Configuration;
 using Configurator.Services;
+using Configurator.Services.Generators;
 using Configurator.Services.OutputBuilders;
 using Configurator.Services.Validators;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,9 @@ namespace Configurator
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
-                .AddOutputBuilder<BranchOutputBuilder>()
+                .AddOutputBuilder<BranchBuilder>()
+                .AddGenerator<ConsoleGenerator>()
+                .AddGenerator<YamlGenerator>()
                 .Build();
 
             executor.Execute();

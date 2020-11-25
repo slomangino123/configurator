@@ -29,7 +29,10 @@ namespace Configurator.Configuration
 
         public static IPipelineBuilder AddArgumentExtractor<TArgumentExtractor>(this IPipelineBuilder builder)
         {
-            var sd = new ServiceDescriptor(typeof(IArgumentExtractor<>).MakeGenericType(builder.Argument), typeof(TArgumentExtractor), ServiceLifetime.Transient);
+            var sd = new ServiceDescriptor(
+                typeof(IArgumentExtractor<>).MakeGenericType(builder.Argument),
+                typeof(TArgumentExtractor),
+                ServiceLifetime.Transient);
             builder.Services.Add(sd);
             return builder;
         }
@@ -45,6 +48,16 @@ namespace Configurator.Configuration
             where TBuilder : class, IOutputBuilder
         {
             builder.Services.AddTransient<IOutputBuilder, TBuilder>();
+            return builder;
+        }
+
+        public static IPipelineBuilder AddGenerator<TGenerator>(this IPipelineBuilder builder)
+        {
+            var sd = new ServiceDescriptor(
+                typeof(IGenerator<>).MakeGenericType(builder.Output),
+                typeof(TGenerator),
+                ServiceLifetime.Transient);
+            builder.Services.Add(sd);
             return builder;
         }
     }

@@ -12,6 +12,7 @@ namespace Configurator.Interfaces
     {
         IServiceCollection Services { get; }
         Type Argument { get; }
+        Type Output { get; }
         IPipelineExecutor Build();
     }
 }

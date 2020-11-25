@@ -35,6 +35,13 @@ namespace Configurator
             {
                 builder.Build(context.GetOutput(), context.GetArguments());
             }
+
+            var generators = context.Services.GetServices(typeof(IGenerator<>).MakeGenericType(context.GetOutput().GetType()));
+
+            foreach (var generator in generators)
+            {
+                generator.GetType().GetMethod("Generate").Invoke(generator, new object[] { context.GetOutput() });
+            }
         }
 
         /*

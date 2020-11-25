@@ -15,8 +15,8 @@ namespace Configurator.Services
         where TArguments : IArguments
     {
         private readonly Type Project;
-        private readonly Type Output;
         public Type Argument { get; }
+        public Type Output { get; }
         public IServiceCollection Services { get; }
 
         public PipelineBuilder(Type project, Type argument, Type output, IServiceCollection services)
