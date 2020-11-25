@@ -7,24 +7,13 @@ using Configurator.Processor;
 
 namespace Configurator.Sample.AspNetCore.Services.Processors
 {
-    public class BranchProcessor : IProcessor<Arguments, Output, string>
+    public class BranchProcessor : BaseProcessor<string, Output, Arguments>
     {
-        public int Precedence => 10;
+        public override Expression<Func<Output, string>> PropertySelector => (x) => x.Branch;
 
-        public string Key => "branch";
-
-        public Expression<Func<Output, string>> ArgumentSelector => (x) => x.Branch;
-
-        public void Assign(string property, Output output)
+        public override string Process(Arguments arguments)
         {
-            output.Branch = property;
+            return arguments.Branch + "derp";
         }
-
-        public Task<string> Process(Arguments arguments, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(arguments.Branch);
-        }
-
-
     }
 }

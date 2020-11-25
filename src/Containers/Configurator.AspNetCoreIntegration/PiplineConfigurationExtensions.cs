@@ -5,8 +5,8 @@ using Configurator.Argument;
 using Configurator.Extractor;
 using Configurator.Generators;
 using Configurator.Interfaces;
-using Configurator.OutputBuilder;
 using Configurator.Pipeline;
+using Configurator.Processor;
 using Configurator.Validator;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,10 +50,10 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IPipelineBuilder AddOutputBuilder<TBuilder>(this IPipelineBuilder builder)
-            where TBuilder : class, IOutputBuilder
+        public static IPipelineBuilder AddProcessor<TProcessor>(this IPipelineBuilder builder)
+            where TProcessor : class, IProcessor
         {
-            builder.Services.AddTransient<IOutputBuilder, TBuilder>();
+            builder.Services.AddTransient<IProcessor, TProcessor>();
             return builder;
         }
 

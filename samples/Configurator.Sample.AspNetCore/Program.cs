@@ -2,7 +2,7 @@
 using Configurator.Configuration;
 using Configurator.Generators;
 using Configurator.Sample.AspNetCore.Services.Extensions;
-using Configurator.Sample.AspNetCore.Services.OutputBuilders;
+using Configurator.Sample.AspNetCore.Services.Processors;
 using Configurator.Sample.AspNetCore.Services.Validators;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +24,7 @@ namespace Configurator.Sample.AspNetCore
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
-                .AddOutputBuilder<BranchBuilder>()
+                .AddProcessor<BranchProcessor>()
                 .AddConsoleGenerator()
                 .AddYamlGenerator(configBuilder =>
                 {
