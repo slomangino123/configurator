@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
@@ -12,6 +13,16 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.10" />
-    <PackageReference Include="YamlDotNet" Version="9.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Containers\Configurator.AspNetCoreIntegration\Configurator.AspNetCoreIntegration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
