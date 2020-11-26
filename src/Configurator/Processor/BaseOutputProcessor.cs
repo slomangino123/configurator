@@ -7,8 +7,8 @@ using Configurator.Interfaces;
 
 namespace Configurator.Processor
 {
-    public abstract class BaseProcessor<TProperty, TOutput, TArguments>
-        : IProcessor<TProperty, TOutput, TArguments>
+    public abstract class BaseOutputProcessor<TProperty, TOutput, TArguments>
+        : IOutputProcessor<TProperty, TOutput, TArguments>
         where TOutput : IOutput
         where TArguments : IArguments
     {

@@ -7,7 +7,7 @@ using Configurator.Processor;
 
 namespace Configurator.Sample.AspNetCore.Services.Processors
 {
-    public class BranchProcessor : BaseProcessor<string, Output, Arguments>
+    public class BranchProcessor : BaseOutputProcessor<string, Output, Arguments>
     {
         public override Expression<Func<Output, string>> PropertySelector => (x) => x.Branch;
 

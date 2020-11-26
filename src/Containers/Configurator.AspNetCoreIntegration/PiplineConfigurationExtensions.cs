@@ -51,9 +51,9 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         public static IPipelineBuilder AddProcessor<TProcessor>(this IPipelineBuilder builder)
-            where TProcessor : class, IProcessor
+            where TProcessor : class, IOutputProcessor
         {
-            builder.Services.AddTransient<IProcessor, TProcessor>();
+            builder.Services.AddTransient<IOutputProcessor, TProcessor>();
             return builder;
         }
 

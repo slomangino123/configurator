@@ -6,7 +6,7 @@ using Configurator.Interfaces;
 
 namespace Configurator.Processor
 {
-    public interface IProcessor<TProperty, TOutput, TArguments> : IProcessor
+    public interface IOutputProcessor<TProperty, TOutput, TArguments> : IOutputProcessor
         where TOutput : IOutput
         where TArguments : IArguments
     {
@@ -14,7 +14,7 @@ namespace Configurator.Processor
         TProperty Process(TArguments arguments);
     }
 
-    public interface IProcessor
+    public interface IOutputProcessor
     {
         int Precedence { get; }
         void Process(IOutput output, IArguments arguments);

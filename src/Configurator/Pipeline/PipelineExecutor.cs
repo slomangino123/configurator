@@ -23,7 +23,7 @@ namespace Configurator.Pipeline
                 validator.Validate(context.GetArguments(), default).Wait();
             }
 
-            var processors = context.Services.GetServices<IProcessor>();
+            var processors = context.Services.GetServices<IOutputProcessor>();
             foreach (var processor in processors.OrderBy(x => x.Precedence))
             {
                 processor.Process(context.GetOutput(), context.GetArguments());
