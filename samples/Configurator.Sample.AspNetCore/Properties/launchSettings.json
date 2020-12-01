@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Configurator.Sample.AspNetCore": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
