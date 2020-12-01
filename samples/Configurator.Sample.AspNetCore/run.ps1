@@ -1,8 +1,8 @@
 docker run `
 -v "$(pwd)\samples\Configurator.Sample.AspNetCore\output:/output" `
 -e build=true `
--e branch=from-docker-file `
+-e branch=docker `
 -e test=derp `
 -e YAML_OUTPUT_PATH="/output" `
--e YAML_FILENAME="test" `
+-e YAML_FILENAME="docker" `
 configurator:aspnetcore
