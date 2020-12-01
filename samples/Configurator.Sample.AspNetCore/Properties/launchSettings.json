@@ -1,7 +1,13 @@
 {
   "profiles": {
     "Configurator.Sample.AspNetCore": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {
+        "build": "true",
+        "branch": "vs",
+        "YAML_OUTPUT_PATH": "C:\\Code\\configurator\\samples\\Configurator.Sample.AspNetCore\\output",
+        "YAML_FILENAME": "visual-studio"
+      }
     },
     "Docker": {
       "commandName": "Docker"
