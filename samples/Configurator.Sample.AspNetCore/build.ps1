@@ -1,0 +1,1 @@
+docker build -t configurator:aspnetcore -f samples/Configurator.Sample.AspNetCore/Dockerfile .

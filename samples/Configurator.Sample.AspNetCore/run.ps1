@@ -1,0 +1,1 @@
+docker run -v "$(pwd)\samples\Configurator.Sample.AspNetCore\:/output" configurator:aspnetcore
