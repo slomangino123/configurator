@@ -13,7 +13,7 @@ namespace Configurator.Sample.AspNetCore.Services.Processors
 
         public override string Process(Arguments arguments)
         {
-            return arguments.Branch + "derp";
+            return arguments.Branch;
         }
     }
 }
