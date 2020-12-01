@@ -1,24 +1,27 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Configurator.Argument;
 using Configurator.Extractor;
 using Configurator.Generators;
+using Configurator.Generators.Yaml;
 using Configurator.Interfaces;
 using Configurator.Pipeline;
 using Configurator.Processor;
 using Configurator.Validator;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using YamlDotNet.Serialization;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class PiplineConfigurationExtensions
     {
-        public static IPipelineBuilder AddConfigurator<TProject, TArguments, TOutput>(
-           this IConfiguration config)
+        public static IPipelineBuilder AddConfigurator<TProject, TArguments, TOutput>()
            where TArguments : IArguments
         {
             var services = new ServiceCollection();
-            services.AddTransient<IConfiguration>((svc) => config);
+            services.AddOptions();
+
             services.AddTransient<IArgumentBuilder, ArgumentBuilder<TArguments>>();
 
             var builder = new PipelineBuilder<TArguments>(
@@ -27,6 +30,18 @@ namespace Microsoft.Extensions.DependencyInjection
                 typeof(TOutput),
                 services);
 
+            return builder;
+        }
+
+        public static IPipelineBuilder AddEnvironmentVariables(this IPipelineBuilder builder)
+        {
+            builder.ConfigurationBuilder.AddEnvironmentVariables();
+            return builder;
+        }
+
+        public static IPipelineBuilder AddJsonFile(this IPipelineBuilder builder, string filename)
+        {
+            builder.ConfigurationBuilder.AddJsonFile(filename);
             return builder;
         }
 
@@ -70,7 +85,15 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IPipelineBuilder AddYamlGenerator(this IPipelineBuilder builder, Action<SerializerBuilder> configureSerializer = null)
+        public static IPipelineBuilder AddYamlGenerator(
+            this IPipelineBuilder builder,
+            Action<SerializerBuilder> configureSerializer) =>
+            builder.AddYamlGenerator(x => new YamlGeneratorOptions(), configureSerializer);
+
+        public static IPipelineBuilder AddYamlGenerator(
+            this IPipelineBuilder builder,
+            Action<YamlGeneratorOptions> configureSettings,
+            Action<SerializerBuilder> configureSerializer)
         {
             builder.Services.AddTransient<ISerializer>((svc) =>
             {
@@ -78,6 +101,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 configureSerializer?.Invoke(serializerBuilder);
                 return serializerBuilder.Build();
             });
+
+            builder.Services.AddSingleton<IPostConfigureOptions<YamlGeneratorOptions>, YamlGeneratorPostConfigureOptions>();
+
+            builder.Services.Configure<YamlGeneratorOptions>(configureSettings);
 
             builder.Services.AddTransient<IGenerator, YamlGenerator>();
             return builder;
