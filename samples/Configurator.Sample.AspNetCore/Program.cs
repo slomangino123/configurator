@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using Configurator.Configuration;
-using Configurator.Generators;
+using Configurator.Generators.Yaml;
 using Configurator.Sample.AspNetCore.Services.Extensions;
 using Configurator.Sample.AspNetCore.Services.Processors;
 using Configurator.Sample.AspNetCore.Services.Validators;
@@ -14,19 +16,15 @@ namespace Configurator.Sample.AspNetCore
     {
         static async Task Main(string[] args)
         {
-            var configurationBuilder = new ConfigurationBuilder();
-            configurationBuilder
-                .AddJsonFile($"appsettings.json")
-                .AddEnvironmentVariables();
-            IConfiguration config = configurationBuilder.Build();
-
-            var executor = config.AddConfigurator<object, Arguments, Output>()
+            var executor = PiplineConfigurationExtensions.AddConfigurator<object, Arguments, Output>()
+                .AddEnvironmentVariables()
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
                 .AddProcessor<BranchProcessor>()
                 .AddConsoleGenerator()
-                .AddYamlGenerator(configBuilder =>
+                .AddYamlGenerator(
+                configBuilder =>
                 {
                     configBuilder.WithNamingConvention(CamelCaseNamingConvention.Instance);
                 })
