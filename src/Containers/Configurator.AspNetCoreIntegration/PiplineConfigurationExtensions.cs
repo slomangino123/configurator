@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Configurator.Argument;
 using Configurator.Extractor;
 using Configurator.Generators;
@@ -9,7 +7,6 @@ using Configurator.Pipeline;
 using Configurator.Processor;
 using Configurator.Validator;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using YamlDotNet.Serialization;
 
 namespace Microsoft.Extensions.DependencyInjection
