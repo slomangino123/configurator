@@ -3,7 +3,8 @@
     "Configurator.Sample.AspNetCore": {
       "commandName": "Project",
       "environmentVariables": {
-        "build": "true",
+        "build": "false",
+        "test": "true",
         "branch": "vs",
         "YAML_OUTPUT_PATH": "C:\\Code\\configurator\\samples\\Configurator.Sample.AspNetCore\\output",
         "YAML_FILENAME": "visual-studio"
