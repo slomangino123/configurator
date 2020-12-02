@@ -31,7 +31,7 @@ namespace Configurator.Generators.Yaml
 
             if (string.IsNullOrWhiteSpace(options.Path))
             {
-                var pathFromConfig = configuration[PATH_KEY] ?? "/output";
+                var pathFromConfig = configuration[PATH_KEY] ?? "\\output";
                 options.Path = pathFromConfig;
             }
         }

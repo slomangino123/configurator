@@ -32,7 +32,7 @@ namespace Configurator.Generators.Yaml
 
             var filename = settings.Filename;
 
-            if (!filename.EndsWith(".yaml") || !filename.EndsWith(".yml"))
+            if (!filename.EndsWith(".yaml") && !filename.EndsWith(".yml"))
             {
                 filename += ".yaml";
             }
