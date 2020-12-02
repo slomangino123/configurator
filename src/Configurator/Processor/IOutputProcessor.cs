@@ -10,7 +10,7 @@ namespace Configurator.Processor
         where TOutput : IOutput
         where TArguments : IArguments
     {
-        Expression<Func<TOutput, TProperty>> PropertySelector { get; }
+        Expression<Func<TOutput, TProperty>> OutputPropertySelector { get; }
         TProperty Process(TArguments arguments);
     }
 

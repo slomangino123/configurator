@@ -13,7 +13,7 @@ namespace Configurator.Processor
         where TArguments : IArguments
     {
         public virtual int Precedence => 10;
-        public abstract Expression<Func<TOutput, TProperty>> PropertySelector { get; }
+        public abstract Expression<Func<TOutput, TProperty>> OutputPropertySelector { get; }
 
         public abstract TProperty Process(TArguments arguments);
 
@@ -25,7 +25,7 @@ namespace Configurator.Processor
 
         private void Assign(TProperty propertyValue, IOutput output)
         {
-            var member = PropertySelector.Body as MemberExpression;
+            var member = OutputPropertySelector.Body as MemberExpression;
 
             var property = member.Member as PropertyInfo;
 
