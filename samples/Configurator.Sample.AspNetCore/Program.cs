@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Configurator.Configuration;
-using Configurator.Generators.Yaml;
+using Configurator.Sample.AspNetCore.Objects;
 using Configurator.Sample.AspNetCore.Services.Extensions;
 using Configurator.Sample.AspNetCore.Services.Processors;
 using Configurator.Sample.AspNetCore.Services.Validators;
@@ -21,7 +20,9 @@ namespace Configurator.Sample.AspNetCore
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
                 .AddArgumentValidator<BranchValidator>()
-                .AddProcessor<BranchProcessor>()
+                .AddProcessor<BuildProcessor>()
+                .AddProcessor<TestProcessor>()
+                .AddProcessor<GitProcessor>()
                 .AddConsoleGenerator()
                 .AddYamlGenerator(
                 configBuilder =>
