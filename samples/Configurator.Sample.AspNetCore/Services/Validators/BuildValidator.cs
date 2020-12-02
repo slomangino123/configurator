@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Configurator.Configuration;
+using Configurator.Sample.AspNetCore.Objects;
 using Configurator.Validator;
 
 namespace Configurator.Sample.AspNetCore.Services.Validators
