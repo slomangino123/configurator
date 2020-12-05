@@ -33,7 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IPipelineBuilder AddEnvironmentVariables(this IPipelineBuilder builder)
+        public static IPipelineBuilder AddEnvironmentVariableArguments(this IPipelineBuilder builder)
         {
             builder.ConfigurationBuilder.AddEnvironmentVariables();
             return builder;
