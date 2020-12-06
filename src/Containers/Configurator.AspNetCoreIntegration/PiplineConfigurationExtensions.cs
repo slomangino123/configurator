@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class PiplineConfigurationExtensions
     {
-        public static IPipelineBuilder AddConfigurator<TProject, TArguments, TOutput>()
+        public static IPipelineBuilder AddConfigurator<TArguments, TOutput>()
            where TArguments : IArguments
         {
             var services = new ServiceCollection();
@@ -25,7 +25,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IArgumentBuilder, ArgumentBuilder<TArguments>>();
 
             var builder = new PipelineBuilder<TArguments>(
-                typeof(TProject),
                 typeof(TArguments),
                 typeof(TOutput),
                 services);
