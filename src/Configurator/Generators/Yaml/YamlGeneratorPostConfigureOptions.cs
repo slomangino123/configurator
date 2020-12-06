@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -26,12 +27,18 @@ namespace Configurator.Generators.Yaml
             if (string.IsNullOrWhiteSpace(options.Filename))
             {
                 var filenameFromConfig = configuration[FILENAME_KEY] ?? "yaml_output.yaml";
+
+                if (!filenameFromConfig.EndsWith(".yaml") && !filenameFromConfig.EndsWith(".yml"))
+                {
+                    filenameFromConfig += ".yaml";
+                }
+
                 options.Filename = filenameFromConfig;
             }
 
             if (string.IsNullOrWhiteSpace(options.Path))
             {
-                var pathFromConfig = configuration[PATH_KEY] ?? "\\output";
+                var pathFromConfig = configuration[PATH_KEY] ?? Path.Combine(Directory.GetCurrentDirectory(), "output");
                 options.Path = pathFromConfig;
             }
         }

@@ -23,21 +23,7 @@ namespace Configurator.Generators.Yaml
         {
             var yaml = serializer.Serialize(output);
 
-            var path = string.IsNullOrEmpty(settings.Path) ? Directory.GetCurrentDirectory() : settings.Path;
-
-            if (!path.EndsWith('/'))
-            {
-                path = path + '/';
-            }
-
-            var filename = settings.Filename;
-
-            if (!filename.EndsWith(".yaml") && !filename.EndsWith(".yml"))
-            {
-                filename += ".yaml";
-            }
-
-            path = path + filename;
+            var path = Path.Combine(settings.Path, settings.Filename);
 
             File.WriteAllText(path, yaml);
         }
