@@ -39,9 +39,9 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IPipelineBuilder AddJsonFile(this IPipelineBuilder builder, string filename)
+        public static IPipelineBuilder AddJsonFileArguments(this IPipelineBuilder builder, string filename)
         {
-            builder.ConfigurationBuilder.AddJsonFile(filename);
+            builder.ConfigurationBuilder.AddJsonFile(filename, false);
             return builder;
         }
 

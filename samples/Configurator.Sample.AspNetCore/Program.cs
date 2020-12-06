@@ -16,6 +16,7 @@ namespace Configurator.Sample.AspNetCore
         static async Task Main(string[] args)
         {
             var executor = PiplineConfigurationExtensions.AddConfigurator<object, Arguments, Output>()
+                .AddJsonFileArguments("appsettings.json")
                 .AddEnvironmentVariableArguments()
                 .AddArgumentExtractor<ArgumentExtractor>()
                 .AddArgumentValidator<BuildValidator>()
