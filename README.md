@@ -9,7 +9,7 @@ Configurator is a free, open-source tool used to configure CI/CD pipelines by in
 [Coming Soon...](https://github.com/slomangino123/configurator)
 
 ## Build Status
-[Coming Soon...](https://github.com/slomangino123/configurator)
+![.NET Core](https://github.com/slomangino123/configurator/workflows/.NET%20Core/badge.svg?branch=master)
  
 ## Contributing
 [Coming Soon...](https://github.com/slomangino123/configurator)
