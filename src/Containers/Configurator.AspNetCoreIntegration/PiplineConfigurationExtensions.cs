@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using Configurator.Argument;
 using Configurator.Extractor;
 using Configurator.Generators;
+using Configurator.Generators.Console;
 using Configurator.Generators.Yaml;
 using Configurator.Interfaces;
 using Configurator.Pipeline;
@@ -78,8 +79,12 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IPipelineBuilder AddConsoleGenerator(this IPipelineBuilder builder)
+        public static IPipelineBuilder AddConsoleGenerator(this IPipelineBuilder builder) =>
+            builder.AddConsoleGenerator((x) => new ConsoleGeneratorOptions());
+
+        public static IPipelineBuilder AddConsoleGenerator(this IPipelineBuilder builder, Action<ConsoleGeneratorOptions> configure)
         {
+            builder.Services.Configure<ConsoleGeneratorOptions>(configure);
             builder.Services.AddTransient<IGenerator, ConsoleGenerator>();
             return builder;
         }
