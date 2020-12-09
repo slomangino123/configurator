@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Configurator.Core</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>slomangino</Authors>
+    <Company>slomangino</Company>
   </PropertyGroup>
 
   <ItemGroup>
