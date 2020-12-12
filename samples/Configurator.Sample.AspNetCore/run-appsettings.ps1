@@ -1,3 +1,4 @@
 docker run `
--v "$(pwd)\samples\Configurator.Sample.AspNetCore\output:/app/output" `
+-v "$(pwd)\output:/app/output" `
+-e YAML_OUTPUT_PATH="/app/output" `
 configurator:aspnetcore

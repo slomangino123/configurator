@@ -5,12 +5,9 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["samples/Configurator.Sample.AspNetCore/Configurator.Sample.AspNetCore.csproj", "samples/Configurator.Sample.AspNetCore/"]
-COPY ["src/Containers/Configurator.AspNetCoreIntegration/Configurator.AspNetCoreIntegration.csproj", "src/Containers/Configurator.AspNetCoreIntegration/"]
-COPY ["src/Configurator/Configurator.csproj", "src/Configurator/"]
-RUN dotnet restore "samples/Configurator.Sample.AspNetCore/Configurator.Sample.AspNetCore.csproj"
+COPY ["Configurator.Sample.AspNetCore.csproj", "Configurator.Sample.AspNetCore/"]
+RUN dotnet restore "Configurator.Sample.AspNetCore/Configurator.Sample.AspNetCore.csproj"
 COPY . .
-WORKDIR "/src/samples/Configurator.Sample.AspNetCore"
 RUN dotnet build "Configurator.Sample.AspNetCore.csproj" -c Release -o /app/build
 
 FROM build AS publish
