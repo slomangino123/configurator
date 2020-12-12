@@ -19,14 +19,14 @@ namespace Configurator.Sample.AspNetCore
                 .AddJsonFileArguments("appsettings.json")
                 .AddEnvironmentVariableArguments()
                 .AddArgumentExtractor<ArgumentExtractor>()
-                .AddArgumentValidator<BuildValidator>()
+                .AddArgumentValidator<ConfirmationValidator>()
                 .AddArgumentValidator<BranchValidator>()
                 .AddProcessor<BuildProcessor>()
                 .AddProcessor<TestProcessor>()
                 .AddProcessor<GitProcessor>()
+                .AddProcessor<ConfirmationProcessor>()
                 .AddConsoleGenerator()
-                .AddYamlGenerator(
-                configBuilder =>
+                .AddYamlGenerator(configBuilder =>
                 {
                     configBuilder.WithNamingConvention(CamelCaseNamingConvention.Instance);
                 })

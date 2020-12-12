@@ -7,12 +7,17 @@ using Configurator.Validator;
 
 namespace Configurator.Sample.AspNetCore.Services.Validators
 {
-    public class BuildValidator : BaseArgumentValidator<bool, Arguments>
+    public class ConfirmationValidator : BaseArgumentValidator<bool, Arguments>
     {
-        public override Expression<Func<Arguments, bool>> ArgumentSelector => (x) => x.Build;
+        public override Expression<Func<Arguments, bool>> ArgumentSelector => (x) => x.Confirmation;
 
         public override Task Validate(bool argument, CancellationToken cancellationToken)
         {
+            if (argument == false)
+            {
+                throw new ArgumentException($"Confirmation was not provided. Value was \"{argument}\".");
+            }
+
             return Task.CompletedTask;
         }
     }

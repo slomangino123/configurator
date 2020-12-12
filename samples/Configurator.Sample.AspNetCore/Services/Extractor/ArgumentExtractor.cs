@@ -10,13 +10,15 @@ namespace Configurator.Sample.AspNetCore.Services.Extensions
         public const string BUILD = "build";
         public const string TEST = "test";
         public const string BRANCH = "branch";
+        public const string CONFIRMATION = "confirmation";
         public Arguments Extract(IConfiguration config)
         {
             var build = TryParseBool(config, BUILD);
             var test = TryParseBool(config, TEST);
             var branch = config[BRANCH];
+            var confirmation = TryParseBool(config, CONFIRMATION);
 
-            var args = new Arguments(build, test, branch);
+            var args = new Arguments(build, test, branch, confirmation);
             return args;
         }
 
@@ -24,7 +26,7 @@ namespace Configurator.Sample.AspNetCore.Services.Extensions
         {
             if (!bool.TryParse(config[key], out bool value))
             {
-                throw new ArgumentException($"Could not parse boolean value for {key}: \"{config[key]}\"");
+                throw new ArgumentException($"Could not parse boolean value for {key}: \"{config[key]}\".");
             }
 
             return value;

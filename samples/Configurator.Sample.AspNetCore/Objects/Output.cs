@@ -10,7 +10,7 @@ namespace Configurator.Sample.AspNetCore.Objects
         }
         public bool Build { get; set; }
         public bool Test { get; set; }
-        //public IDictionary<string, Git> Git { get; set; }
         public Git Git { get; set; }
+        public bool Confirmation { get; set; }
     }
 }
